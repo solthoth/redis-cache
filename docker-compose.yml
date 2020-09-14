@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    image: solthoth/redis-cache-api
+    build:
+      context: src/Api
+    ports:
+        - 80:80
+    env_file: 
+      - docker.env
+    depends_on: 
+      - redis
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
